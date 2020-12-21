@@ -1,5 +1,8 @@
 # EADS_Dictionary
 Algorithms and Data Structures project with graphical representation.
+### Graphical representation.
+A graphical representation is little .exe code developed with the use of MEP libraries.
+Source code of the program will be publised as a part of simple MEP lib learning course.
 ### Goal
 The main goal of the project was to develop an AVL tree.
 ##### Data-structure functionalities.
