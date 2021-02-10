@@ -20,7 +20,7 @@ Dictionary<std::string, int> readFile(std::string filename) {
         //the thing there is that each individual block can be at some point corrupted
         //characters like: . , \ [ and so on may occure.
         //we do need to prevent ourselves from that
-        for (int i = 0; i < line.size(); i++) {
+        for (unsigned int i = 0; i < line.size(); i++) {
             if ((line[i] >= 'a' and line[i] <= 'z') or (line[i] >= 'A' and line[i] <= 'Z')) {
                 local += line[i];
             }
@@ -56,7 +56,7 @@ bool getFrequency(const Dictionary<std::string, int>& d,
     d.executeForAllNodes([&elements, max, &method](auto& it)
         {
             elements.push_back(it);
-            if (elements.size() > max) {
+            if ((int)elements.size() > max) {
                 //I am using a little trick here because we can specify the compering
                 //method so min_element can find minimal and maximal element. 
                 elements.remove(*std::min_element(elements.begin(), elements.end(), method));
@@ -65,7 +65,7 @@ bool getFrequency(const Dictionary<std::string, int>& d,
     );
     //the problem with exact = false is that we do need to recalculate everything after the insertion of the elements
     //so after the insertion lest re-insert the remaining elements
-    if (!exact and elements.size() > max) {
+    if (!exact and (int)elements.size() > max) {
         auto& min = *std::min_element(elements.begin(), elements.end(), method);
         d.executeForAllNodes([&elements, &min](auto& it)
             {
@@ -359,6 +359,7 @@ bool basicFunctionalities() {
         std::cout << "output: false" << std::endl;
         return false;
     }
+    return true;
 }
 bool readFileTest()
 {
